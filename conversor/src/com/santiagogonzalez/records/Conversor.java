@@ -1,4 +1,9 @@
 package com.santiagogonzalez.records;
 
-public record Conversor(String base_code, String target_code, double conversion_rate, double conversion_result) {
+import java.util.Map;
+
+public record Conversor(
+        String base_code,
+        Map<String, Double> conversion_rates
+) {
 }
