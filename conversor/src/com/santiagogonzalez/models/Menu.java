@@ -21,9 +21,8 @@ public class Menu {
                 """);
     }
 
-    public int leerOpcion() {
-        Scanner scanner = new Scanner(System.in);
-
+    public int leerOpcion(Scanner scanner) {
         return scanner.nextInt();
     }
+
 }
