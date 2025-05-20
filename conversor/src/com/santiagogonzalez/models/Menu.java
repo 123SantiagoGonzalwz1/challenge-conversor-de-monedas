@@ -14,7 +14,8 @@ public class Menu {
                 4) Real Brasileño => Dólar.
                 5) Dólar => Peso Colombiano.
                 6) Peso Colombiano => Dólar.
-                7) Salir.
+                7) Visualizar Historial de Conversiones (max: 10 registros).
+                8) Salir.
                 
                 Elija una opción válida, por favor: 
                 **************************************************************************************

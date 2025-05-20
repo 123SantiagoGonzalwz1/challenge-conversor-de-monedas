@@ -9,10 +9,12 @@ import java.util.Scanner;
 public class ProcesadorDeConversion {
     private final Scanner scanner; // 'final' no deja que el comportamiento de la variable pueda ser alterado
     private final Calculo calculo;
+    private final GestorHistorial historial;
 
-    public ProcesadorDeConversion(Scanner scanner) {
+    public ProcesadorDeConversion(Scanner scanner, GestorHistorial historial) {
         this.scanner = scanner;
         this.calculo = new Calculo();
+        this.historial = historial;
     }
 
     public void procesarConversion(Conversor conversor, String monedaBase, String monedaDestino) {
@@ -37,6 +39,9 @@ public class ProcesadorDeConversion {
             // Realizando conversión
             double resultado = calculo.convertirMoneda(monto, tasa);
             System.out.println("El valor " + monto + " [" + monedaBase + "] corresponde al valor final de = " + resultado + " [" + monedaDestino + "]");
+
+            HistorialConversiones conversion = new HistorialConversiones(monedaBase, monedaDestino, monto, tasa, resultado);
+            historial.agregarConversion(conversion);
         } else {
             System.out.println("No fue posible obtener la tasa de conversión");
         }

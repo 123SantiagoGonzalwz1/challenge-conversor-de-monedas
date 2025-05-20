@@ -28,7 +28,9 @@ public class ConversorDeValor {
             HttpResponse<String> response = client
                     .send(request, HttpResponse.BodyHandlers.ofString());
 
-            return gson.fromJson(response.body(), Conversor.class);
+            String body = response.body();
+
+            return gson.fromJson(body, Conversor.class);
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
         }

@@ -1,8 +1,6 @@
 package com.santiagogonzalez;
 
-import com.santiagogonzalez.models.ConversorDeValor;
-import com.santiagogonzalez.models.Menu;
-import com.santiagogonzalez.models.ProcesadorDeConversion;
+import com.santiagogonzalez.models.*;
 import com.santiagogonzalez.records.Conversor;
 
 import java.util.InputMismatchException;
@@ -13,7 +11,8 @@ public class Main {
         Menu menu = new Menu();
         ConversorDeValor conversorDeValor = new ConversorDeValor();
         Scanner scanner = new Scanner(System.in);
-        ProcesadorDeConversion procesadorDeConversion = new ProcesadorDeConversion(scanner);
+        GestorHistorial historial = new GestorHistorial();
+        ProcesadorDeConversion procesadorDeConversion = new ProcesadorDeConversion(scanner, historial);
 
         while (true) {
             menu.exhibirMenu();
@@ -29,12 +28,12 @@ public class Main {
             }
 
             // Salir del ciclo
-            if (opcion == 7) {
+            if (opcion == 8) {
                 System.out.println("¡Gracias por usar el Conversor de Monedas!");
                 break;
             }
 
-            String monedaBase, monedaDestino = "";
+            String monedaBase = "", monedaDestino = "";
 
             switch (opcion) {
                 case 1 -> { monedaBase = "USD"; monedaDestino = "ARS"; }
@@ -43,6 +42,10 @@ public class Main {
                 case 4 -> { monedaBase = "BRL"; monedaDestino = "USD"; }
                 case 5 -> { monedaBase = "USD"; monedaDestino = "COP"; }
                 case 6 -> { monedaBase = "COP"; monedaDestino = "USD"; }
+                case 7 -> {
+                    historial.mostrarHistorial();
+                    continue;
+                }
                 default -> {
                     System.out.println("La opción indicada no es válida, por favor verifique su respuesta.");
                     continue;
